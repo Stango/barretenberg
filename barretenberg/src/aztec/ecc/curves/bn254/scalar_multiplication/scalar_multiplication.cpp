@@ -320,7 +320,7 @@ void add_affine_points(g1::affine_element* points, const size_t num_points, fq* 
         batch_inversion_accumulator = batch_inversion_accumulator.invert();
     }
 
-    for (size_t i = (num_points)-2; i < num_points; i -= 2) {
+    for (size_t i = (num_points)-2; i >= 0; i -= 2) {
         // Memory bandwidth is a bit of a bottleneck here.
         // There's probably a more elegant way of structuring our data so we don't need to do all of this prefetching
         __builtin_prefetch(points + i - 2);
